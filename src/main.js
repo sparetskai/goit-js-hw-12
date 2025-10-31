@@ -48,7 +48,7 @@ form.addEventListener("submit", async (event) => {
 
     createGallery(data.hits);
 
-    // ✅ Додаємо перевірку на кінець колекції (якщо вже всі результати завантажені)
+   
     if (page * limit >= totalHits) {
       iziToast.info({
         position: "topRight",
