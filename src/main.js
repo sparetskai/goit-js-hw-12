@@ -48,9 +48,17 @@ form.addEventListener("submit", async (event) => {
 
     createGallery(data.hits);
 
-    if (page * limit < totalHits) {
+    // ✅ Додаємо перевірку на кінець колекції (якщо вже всі результати завантажені)
+    if (page * limit >= totalHits) {
+      iziToast.info({
+        position: "topRight",
+        message: "We're sorry, but you've reached the end of search results."
+      });
+      fetchPostsBtn.style.display = 'none';
+    } else {
       fetchPostsBtn.style.display = 'block';
     }
+
   } catch (error) {
     iziToast.error({ title: "Error", message: "Failed to fetch images." });
   } finally {
